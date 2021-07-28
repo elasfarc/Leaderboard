@@ -1,0 +1,51 @@
+/* body {
+  _background-color: orangered;
+
+}
+
+@media only screen and (min-width: 600px) {
+  body {
+    background-color: orangered;
+  }
+} */
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 0.625rem;
+}
+
+body {
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.app-content {
+  border: 1px solid green;
+  justify-content: space-between;
+  height: 80vh;
+}
+
+.scores-container {
+  width: 50%;
+}
+
+.form-container {
+  width: 30%;
+}
+
+.scores-container .content {
+  border: 1px solid blueviolet;
+}
+
+.form {
+  flex-direction: column;
+}
