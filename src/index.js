@@ -1,5 +1,5 @@
 import './style.css';
-import { formSubmitionHandler, validateInput } from './domHelpers.js';
+import { formSubmitionHandler, validateInput, inputInFocus } from './domHelpers.js';
 
 const scoreForm = document.forms.score;
 const { name, score } = scoreForm.elements;
@@ -7,3 +7,5 @@ const { name, score } = scoreForm.elements;
 scoreForm.addEventListener('submit', formSubmitionHandler);
 name.addEventListener('blur', validateInput);
 score.addEventListener('blur', validateInput);
+name.addEventListener('focus', inputInFocus);
+score.addEventListener('focus', inputInFocus);

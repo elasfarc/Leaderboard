@@ -11,33 +11,41 @@
 
 * {
   box-sizing: border-box;
-  margin:0;
+  margin: 0;
   padding: 0;
 }
-html{
-  font-size: .625rem;
+
+html {
+  font-size: 0.625rem;
 }
-body{
+
+body {
   font-size: 2rem;
   padding: 2rem;
 }
+
 .flex {
   display: flex;
 }
-.app-content{
+
+.app-content {
   border: 1px solid green;
   justify-content: space-between;
   height: 80vh;
 }
-.scores-container{
+
+.scores-container {
   width: 50%;
 }
-.form-container{
+
+.form-container {
   width: 30%;
 }
+
 .scores-container .content {
   border: 1px solid blueviolet;
 }
-.form{
+
+.form {
   flex-direction: column;
 }

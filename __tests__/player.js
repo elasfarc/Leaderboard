@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 import Player from '../src/player.js';
 
 describe('#Player', () => {

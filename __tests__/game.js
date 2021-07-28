@@ -1,3 +1,5 @@
+/* eslint-disable no-new */
+
 import Game from '../src/game.js';
 import Player from '../src/player.js';
 

@@ -1,22 +1,19 @@
-export class Error{
+export default class Error {
     #errors
-    constructor(){
-        this.#errors = [];
+
+    constructor() {
+      this.#errors = [];
     }
-    get errors(){
-        return this.#errors;
+
+    get list() {
+      return this.#errors;
     }
-    addError(error){
-        if(!this.#errors.some(e => e.message.includes(error.message)))
-            this.#errors.push(error)
+
+    addError(error) {
+      if (!this.#errors.some((e) => e.message.includes(error.message))) this.#errors.push(error);
     }
-    reset(){
-        this.#errors = [];
+
+    reset() {
+      this.#errors = [];
     }
 }
-
-
-
-
-
-
