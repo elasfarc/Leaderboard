@@ -3,7 +3,8 @@ import Game from './game.js';
 export default class {
     #storage
 
-    constructor() {
+    constructor(id) {
+      this.uniqueID = id;
       this.#storage = [];
     }
 

@@ -1,12 +1,20 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-restricted-globals */
 
+import App from './app.js';
 import LeaderBoard from './leaderboard.js';
 import Game from './game.js';
 import Player from './player.js';
 import Error from './error.js';
 
-const leaderboard = new LeaderBoard();
+// program starts
+const app = new App();
+let leaderboard;
+window.onload = async () => {
+  if (app.isFirstTime) await app.addLeaderBoard('new-leader-board');
+  const id = app.storage[0];
+  leaderboard = new LeaderBoard(id);
+};
 const errors = new Error();
 
 function displayError(errors) {
