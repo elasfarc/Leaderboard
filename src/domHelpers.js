@@ -30,12 +30,14 @@ function displayFlashMsgs(messages) {
   scoreForm.appendChild(errorsList);
 }
 
-function updateGameList(game) {
+function updateGameList(games) {
   const gamesContainer = document.querySelector('.scores-container .content');
-  gamesContainer.innerHTML
-    += `
-        <li class='game'> ${game.player.name} : ${game.score} </li>
-    `;
+  games.forEach((game) => {
+    const listItem = document.createElement('li');
+    listItem.classList.add('game');
+    listItem.innerText = `${game.player.name} : ${game.score}`;
+    gamesContainer.insertAdjacentElement('afterbegin', listItem);
+  });
 }
 function clearInput(...elements) {
   [...elements].forEach((inputElement) => { inputElement.value = ''; });
@@ -61,7 +63,7 @@ export async function formSubmitionHandler(event) {
     displayFlashMsgs([{ message: successMsg }]);
 
     // update the dom
-    updateGameList(game);
+    updateGameList([game]);
 
     // clear
     clearInput(name, score);
