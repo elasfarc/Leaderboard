@@ -11,13 +11,20 @@ import Error from './error.js';
 // program starts
 const app = new App();
 let leaderboard;
+let leaderBoardName;
+const errors = new Error();
 window.onload = async () => {
-  if (app.isFirstTime) await app.addLeaderBoard('new-leader-board');
-  const id = app.storage[0];
+  if (app.isFirstTime) {
+    leaderBoardName = window.prompt('Enter leaderBoard Name:');
+    await app.addLeaderBoard(leaderBoardName);
+  }
+
+  const { id } = app.storage[0];
   leaderboard = new LeaderBoard(id);
+  const header = document.querySelector('.header h1');
+  header.innerText += ` ${app.storage[0].name}`;
   handleRefresh();
 };
-const errors = new Error();
 
 function displayFlashMsgs(messages) {
   const scoreForm = document.querySelector('.score-form');

@@ -17,7 +17,7 @@ export default class App {
       const data = { name };
       const { result } = await post({ entryPoint, data });
       const id = result.substr(14, 20);
-      this.#storage.push(id);
+      this.#storage.push({ id, name });
       this.updateLocalStorage();
     }
 
