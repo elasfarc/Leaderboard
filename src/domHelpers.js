@@ -26,7 +26,7 @@ window.onload = async () => {
   handleRefresh();
 };
 
-function displayFlashMsgs(messages) {
+ const displayFlashMsgs = (messages) => {
   const scoreForm = document.querySelector('.score-form');
   const errorsList = document.createElement('ul');
   errorsList.classList.add('errorsList');
@@ -39,7 +39,7 @@ function displayFlashMsgs(messages) {
   scoreForm.appendChild(errorsList);
 }
 
-function updateGameList(games) {
+const updateGameList= (games) => {
   const gamesContainer = document.querySelector('.scores-container .content');
   games.forEach((game) => {
     const listItem = document.createElement('li');
@@ -48,10 +48,10 @@ function updateGameList(games) {
     gamesContainer.insertAdjacentElement('afterbegin', listItem);
   });
 }
-function clearInput(...elements) {
+const clearInput = (...elements) => {
   [...elements].forEach((inputElement) => { inputElement.value = ''; });
 }
-export async function formSubmitionHandler(event) {
+export const formSubmitionHandler = async(event) => {
   event.preventDefault();
   const { name, score } = event.target.elements;
 
@@ -77,15 +77,15 @@ export async function formSubmitionHandler(event) {
     clearInput(name, score);
   }
 }
-function validateName(name) {
+const validateName = (name) => {
   (name.trim().length < 3) && errors.addError({ message: 'min name length 3 chars' });
 }
 
-function validateScore(score) {
+const validateScore = (score) => {
   (isNaN(score) || (typeof +score !== 'number')) && errors.addError({ message: 'score must be a number' });
 }
 
-export function validateInput(event) {
+export const validateInput = (event) => {
   const userInput = event.target.value;
   (userInput.trim().length < 1) && errors.addError({ message: `${event.target.name} can't be empty!` });
   if (event.target.name === 'name') validateName(userInput);
@@ -94,14 +94,14 @@ export function validateInput(event) {
   (errors.list.length > 0) && displayFlashMsgs(errors.list);
 }
 
-export function inputInFocus() {
+export const inputInFocus= () => {
   const scoreForm = document.querySelector('.score-form');
   const errorsList = scoreForm.querySelector('.errorsList');
   (errorsList) && scoreForm.removeChild(errorsList);
   errors.reset();
 }
 
-export async function handleRefresh() {
+export const handleRefresh = async() => {
   const gamesContainer = document.querySelector('.scores-container .content');
   gamesContainer.innerHTML = '';
   const [...result] = await leaderboard.refresh();
