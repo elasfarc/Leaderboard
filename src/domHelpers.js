@@ -17,12 +17,12 @@ window.onload = async () => {
 };
 const errors = new Error();
 
-function displayError(errors) {
+function displayFlashMsgs(messages) {
   const scoreForm = document.querySelector('.score-form');
   const errorsList = document.createElement('ul');
   errorsList.classList.add('errorsList');
 
-  errors.forEach((e) => {
+  messages.forEach((e) => {
     errorsList.innerHTML += `
           <li>${e.message}</li>
       `;
@@ -40,7 +40,7 @@ function updateGameList(game) {
 function clearInput(...elements) {
   [...elements].forEach((inputElement) => { inputElement.value = ''; });
 }
-export function formSubmitionHandler(event) {
+export async function formSubmitionHandler(event) {
   event.preventDefault();
   const { name, score } = event.target.elements;
 
@@ -48,13 +48,17 @@ export function formSubmitionHandler(event) {
 
   // errors('reset');
   if (errors.list.length > 0) {
-    displayError(errors.list);
-    errors.reset();
+    displayFlashMsgs(errors.list);
+    // errors.reset();
   } else {
     // add a new game obj into leaderboard
     const player = new Player({ name: name.value });
     const game = new Game({ player, score: +score.value });
-    leaderboard.addGame(game);
+    await leaderboard.addGame(game);
+
+    // post scores && extract response
+    const successMsg = await leaderboard.addGame(game);
+    displayFlashMsgs([{ message: successMsg }]);
 
     // update the dom
     updateGameList(game);
@@ -77,7 +81,7 @@ export function validateInput(event) {
   if (event.target.name === 'name') validateName(userInput);
   else (validateScore(userInput));
 
-  (errors.list.length > 0) && displayError(errors.list);
+  (errors.list.length > 0) && displayFlashMsgs(errors.list);
 }
 
 export function inputInFocus() {

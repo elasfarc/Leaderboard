@@ -8,8 +8,8 @@ const postOptions = (data) => ({
   body: JSON.stringify(data),
 });
 
-export const post = async ({ entryPoint, boardName }) => {
-  const options = postOptions(boardName);
+export const post = async ({ entryPoint, data }) => {
+  const options = postOptions(data);
   const url = `${BASE_URL}${entryPoint}`;
 
   try {

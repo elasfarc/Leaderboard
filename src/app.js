@@ -14,8 +14,8 @@ export default class App {
 
     async addLeaderBoard(name) {
       const entryPoint = 'games/';
-      const boardName = { name };
-      const { result } = await post({ entryPoint, boardName });
+      const data = { name };
+      const { result } = await post({ entryPoint, data });
       const id = result.substr(14, 20);
       this.#storage.push(id);
       this.updateLocalStorage();
