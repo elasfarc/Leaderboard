@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-expressions */
 /* eslint-disable no-restricted-globals */
+/* eslint-disable no-use-before-define */
 
 import App from './app.js';
 import LeaderBoard from './leaderboard.js';
@@ -14,6 +15,7 @@ window.onload = async () => {
   if (app.isFirstTime) await app.addLeaderBoard('new-leader-board');
   const id = app.storage[0];
   leaderboard = new LeaderBoard(id);
+  handleRefresh();
 };
 const errors = new Error();
 
@@ -35,7 +37,7 @@ function updateGameList(games) {
   games.forEach((game) => {
     const listItem = document.createElement('li');
     listItem.classList.add('game');
-    listItem.innerText = `${game.player.name} : ${game.score}`;
+    listItem.innerText = `${game.user} : ${game.score}`;
     gamesContainer.insertAdjacentElement('afterbegin', listItem);
   });
 }
@@ -56,14 +58,13 @@ export async function formSubmitionHandler(event) {
     // add a new game obj into leaderboard
     const player = new Player({ name: name.value });
     const game = new Game({ player, score: +score.value });
-    await leaderboard.addGame(game);
 
     // post scores && extract response
     const successMsg = await leaderboard.addGame(game);
     displayFlashMsgs([{ message: successMsg }]);
 
     // update the dom
-    updateGameList([game]);
+    updateGameList([{ user: game.player.name, score: game.score }]);
 
     // clear
     clearInput(name, score);
@@ -91,4 +92,11 @@ export function inputInFocus() {
   const errorsList = scoreForm.querySelector('.errorsList');
   (errorsList) && scoreForm.removeChild(errorsList);
   errors.reset();
+}
+
+export async function handleRefresh() {
+  const gamesContainer = document.querySelector('.scores-container .content');
+  gamesContainer.innerHTML = '';
+  const [...result] = await leaderboard.refresh();
+  updateGameList(result);
 }

@@ -20,3 +20,14 @@ export const post = async ({ entryPoint, data }) => {
     return error;
   }
 };
+
+export const get = async ({ entryPoint }) => {
+  const url = `${BASE_URL}${entryPoint}`;
+  try {
+    const response = await fetch(url);
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    return error;
+  }
+};

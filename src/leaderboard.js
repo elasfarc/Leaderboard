@@ -1,5 +1,5 @@
 import Game from './game.js';
-import { post } from './services/api/utilities/provider.js';
+import { post, get } from './services/api/utilities/provider.js';
 
 export default class {
     #storage
@@ -22,6 +22,13 @@ export default class {
       const { result } = await post({ entryPoint, data });
 
       this.#storage.push(game);
+      return result;
+    }
+
+    async refresh() {
+      // update storage for leaderboard obj (get req)
+      const entryPoint = `games/${this.uniqueID}/scores/`;
+      const { result } = await get({ entryPoint });
       return result;
     }
 }
