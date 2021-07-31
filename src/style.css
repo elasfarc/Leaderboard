@@ -1,8 +1,4 @@
-/* body {
-  _background-color: orangered;
-
-}
-
+/*
 @media only screen and (min-width: 600px) {
   body {
     background-color: orangered;
@@ -20,32 +16,137 @@ html {
 }
 
 body {
+  font-family: 'Inter', sans-serif;
   font-size: 2rem;
   padding: 2rem;
+  background-color: rgb(32, 41, 68);
+  color: rgb(255, 255, 255);
 }
 
+ul {
+  list-style: none;
+}
+
+a:link {
+  text-decoration: none;
+}
+
+/* shared classes */
 .flex {
   display: flex;
 }
 
+.btn,
+.game {
+  background-color: #6573fd;
+}
+
+.btn {
+  padding: 1rem 3rem;
+  border-radius: 10px;
+  color: #f3f0ff;
+}
+
+.game {
+  margin: 2rem 0;
+  padding: 2rem 0 2rem 1.5rem;
+  color: #f3f0ff;
+  border-radius: 10px;
+  font-size: 3rem;
+  letter-spacing: 1.6px;
+}
+
+.btn:hover,
+.game:hover {
+  background-color: rgb(166, 176, 251);
+}
+
+.header {
+  margin: 3rem;
+  font-size: 4rem;
+}
+
 .app-content {
-  border: 1px solid green;
+  border: 10px solid rgb(103, 116, 249);
+  border-radius: 20px;
+  padding: 0 3rem;
   justify-content: space-between;
   height: 80vh;
 }
 
-.scores-container {
-  width: 50%;
+.scores-container,
+.form-container {
+  width: 50vw;
 }
 
-.form-container {
-  width: 30%;
+.scores-container .title {
+  margin-top: 3rem;
+  padding: 2rem;
+  justify-content: space-between;
 }
 
 .scores-container .content {
-  border: 1px solid blueviolet;
+  min-height: 65vh;
+  max-height: 65vh;
+  overflow-y: scroll;
+  padding: 1rem;
 }
 
-.form {
-  flex-direction: column;
+.form-container {
+  position: relative;
+  height: 100%;
+}
+
+.form-content {
+  padding: 2rem;
+  width: 30vw;
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.form-container .content {
+  height: 50%;
+  padding: 2rem;
+  text-align: center;
+}
+
+.score-form {
+  margin-top: 5rem;
+  text-align: right;
+}
+
+.score-form input,
+.score-form button {
+  margin-top: 3rem;
+}
+
+.score-form input {
+  display: block;
+  width: 100%;
+  padding: 1rem 2rem;
+  border-radius: 10px;
+  background-color: rgb(32, 41, 68);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 255, 255);
+  font-size: 2rem;
+}
+
+.score-form input:focus {
+  border: 0.5px solid rgb(103, 116, 249);
+  outline: none;
+}
+
+.score-form input::placeholder {
+  color: rgb(103, 116, 249);
+}
+
+.score-form button {
+  font-size: 2rem;
+}
+
+.msg {
+  margin-top: 2rem;
 }

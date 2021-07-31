@@ -1,35 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     <title>LEADERBOARD</title>
-</head>
-<body>
+  </head>
+  <body>
     <div class="container">
-        <header class='header'>
-            <h1>Leaderboard</h1>
-        </header>
-        <div class="app-content flex">
-            <div class="scores-container">
-                <div class="title flex">
-                    <h2>Recent scores</h2>
-                    <a id='refresh' href="#">Refresh</a>
-                </div>
-                <ul class="content">
-                    <li>name: 100</li>
-                </ul>
-            </div>
-            <div class="form-container">
-                <h2>Add your score</h2>
-                <form name='score' class="form score-form flex">
-                    <input type="text" name='name' placeholder="Your name">
-                    <input type="text" name='score' placeholder="Your score">
-                    <button type="submit">Submit</button>
-                </form>
-            </div>
+      <header class='header'>
+        <h1>Leaderboard</h1>
+      </header>
+      <div class="app-content flex">
+        <div class="scores-container">
+          <div class="title flex">
+            <h2>Recent scores</h2>
+            <a class='btn' id='refresh' href="#">Refresh</a>
+          </div>
+          <ul class="content">
+          </ul>
         </div>
+        <div class="form-container ">
+          <div class="form-content">
+            <h2>Add your score</h2>
+            <form name='score' class="form score-form ">
+              <input type="text" name='name' placeholder="Your name">
+              <input type="text" name='score' placeholder="Your score">
+              <button class='btn' type="submit">Submit</button>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
-</body>
+  </body>
 </html>
