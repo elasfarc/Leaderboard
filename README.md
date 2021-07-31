@@ -54,6 +54,9 @@ To run this application locally :
 
 And then open your browser on the port 3000
 
+
+To build the code files to the dist directory
+run `npm run webpack`
   
 
 ## Authors
