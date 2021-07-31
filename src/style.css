@@ -36,6 +36,13 @@ a:link {
   display: flex;
 }
 
+.heading {
+  font-family: 'Indie Flower', cursive;
+  display: inline-block;
+  padding: 0 6rem;
+  border-radius: 10px;
+}
+
 .btn,
 .game {
   background-color: #6573fd;
@@ -54,6 +61,7 @@ a:link {
   border-radius: 10px;
   font-size: 3rem;
   letter-spacing: 1.6px;
+  font-weight: 100;
 }
 
 .btn:hover,
