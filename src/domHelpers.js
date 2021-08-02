@@ -18,11 +18,10 @@ window.onload = async () => {
     leaderBoardName = window.prompt('Enter leaderBoard Name:');
     await app.addLeaderBoard(leaderBoardName);
   }
-
   const { id } = app.storage[0];
   leaderboard = new LeaderBoard(id);
   const header = document.querySelector('.header h1');
-  header.innerText += ` ${app.storage[0].name}`;
+  header.insertAdjacentText('afterbegin', `${app.storage[0].name} `);
   handleRefresh();
 };
 
@@ -33,7 +32,7 @@ const displayFlashMsgs = (messages) => {
 
   messages.forEach((e) => {
     errorsList.innerHTML += `
-          <li>${e.message}</li>
+          <li class='msg'>${e.message}</li>
       `;
   });
   scoreForm.appendChild(errorsList);
